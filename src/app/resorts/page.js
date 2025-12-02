@@ -1,6 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationNext, PaginationEllipsis } from "@/components/ui/pagination";
-import Link from 'next/link'
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationLink,
+  PaginationNext,
+  PaginationEllipsis,
+} from "@/components/ui/pagination";
+import Link from "next/link";
 
 export const metadata = {
   title: "Туры",
@@ -26,26 +34,28 @@ export const metadata = {
   ],
 };
 
-export default function ToursPage() {
+export default function ResortsPage() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden font-display">
+    <div className="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
       <div className="layout-container flex h-full grow flex-col">
-
         <main className="flex flex-col flex-1 items-center px-4 pt-20">
           <div className="layout-content-container flex flex-col w-full max-w-6xl flex-1">
             <div className="flex flex-col lg:flex-row gap-6 p-4 items-start">
               <div className="flex flex-col gap-4 w-full lg:w-1/4 p-4 bg-white rounded-xl shadow-sm border border-[#f0f4f2] lg:sticky lg:top-24">
                 <div className="relative w-full">
+                  {/* Lucide Search Icon */}
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#61896f]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-search" viewBox="0 0 24 24">
-                      <circle cx="11" cy="11" r="8"/>
-                      <path d="m21 21-4.3-4.3"/>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                      className="lucide lucide-search">
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
                     </svg>
                   </span>
                   <input
                     className="form-input w-full rounded-full border-[#e2e8f0] focus:border-primary focus:ring-primary/50 text-sm pl-10 pr-4 py-2"
                     id="search"
-                    placeholder="Поиск туров, направлений..."
+                    placeholder="Поиск курортов..."
                     type="search"
                   />
                 </div>
@@ -55,65 +65,64 @@ export default function ToursPage() {
                 <div className="flex flex-col gap-2">
                   <label
                     className="text-sm font-medium text-[#111813]"
-                    htmlFor="tour-type"
+                    htmlFor="resort-type"
                   >
-                    Тип тура
+                    Тип курорта
                   </label>
                   <select
                     className="form-select w-full rounded-lg border-[#e2e8f0] focus:border-primary focus:ring-primary/50 text-sm"
-                    id="tour-type"
+                    id="resort-type"
                   >
                     <option>Все типы</option>
-                    <option>Приключения</option>
-                    <option>Культурные</option>
-                    <option>Исторические</option>
-                    <option>Природа и дикая жизнь</option>
-                    <option>Городские туры</option>
+                    <option>Горнолыжный</option>
+                    <option>СПА</option>
+                    <option>Природа</option>
+                    <option>Озеро</option>
+                    <option>Горный</option>
                   </select>
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-medium text-[#111813]">
-                    Продолжительность
+                    Удобства
                   </label>
                   <div className="flex flex-col gap-2">
                     <label className="flex items-center gap-2 text-sm text-[#111813]">
                       <input
-                        defaultChecked
-                        className="form-radio rounded-full border-[#e2e8f0] text-primary focus:ring-primary/50"
-                        name="duration"
-                        type="radio"
+                        className="form-checkbox rounded border-[#e2e8f0] text-primary focus:ring-primary/50"
+                        name="amenities"
+                        type="checkbox"
                       />
-                      <span>Любая</span>
+                      <span>Бассейн</span>
                     </label>
                     <label className="flex items-center gap-2 text-sm text-[#111813]">
                       <input
-                        className="form-radio rounded-full border-[#e2e8f0] text-primary focus:ring-primary/50"
-                        name="duration"
-                        type="radio"
+                        className="form-checkbox rounded border-[#e2e8f0] text-primary focus:ring-primary/50"
+                        name="amenities"
+                        type="checkbox"
                       />
-                      <span>1 - 3 дня</span>
+                      <span>Бесплатный Wi-Fi</span>
                     </label>
                     <label className="flex items-center gap-2 text-sm text-[#111813]">
                       <input
-                        className="form-radio rounded-full border-[#e2e8f0] text-primary focus:ring-primary/50"
-                        name="duration"
-                        type="radio"
+                        className="form-checkbox rounded border-[#e2e8f0] text-primary focus:ring-primary/50"
+                        name="amenities"
+                        type="checkbox"
                       />
-                      <span>4 - 7 дней</span>
+                      <span>СПА и Wellness центр</span>
                     </label>
                     <label className="flex items-center gap-2 text-sm text-[#111813]">
                       <input
-                        className="form-radio rounded-full border-[#e2e8f0] text-primary focus:ring-primary/50"
-                        name="duration"
-                        type="radio"
+                        className="form-checkbox rounded border-[#e2e8f0] text-primary focus:ring-primary/50"
+                        name="amenities"
+                        type="checkbox"
                       />
-                      <span>8+ дней</span>
+                      <span>Ресторан</span>
                     </label>
                   </div>
                 </div>
                 <div className="flex flex-col gap-3">
                   <label className="text-sm font-medium text-[#111813]">
-                    Диапазон цен
+                    Ценовой диапазон
                   </label>
                   <div className="relative">
                     <input
@@ -126,8 +135,8 @@ export default function ToursPage() {
                     />
                   </div>
                   <div className="flex justify-between text-xs text-[#61896f]">
-                    <span>0$</span>
-                    <span>1000$+</span>
+                    <span>0₸</span>
+                    <span>1000₸+</span>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row lg:flex-col gap-2 pt-2">
@@ -140,11 +149,40 @@ export default function ToursPage() {
                 </div>
               </div>
               <div className="flex-1">
+                {/* <div className="flex justify-end mb-4">
+                  <div className="inline-flex items-center bg-white rounded-full border border-[#f0f4f2] p-1 shadow-sm">
+                    <button className="flex items-center justify-center gap-2 h-8 px-4 bg-primary/20 text-primary text-sm font-bold rounded-full">
+                      <span className="text-base flex items-center">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                          className="lucide lucide-grid">
+                          <rect width="7" height="7" x="3" y="3" rx="1" />
+                          <rect width="7" height="7" x="14" y="3" rx="1" />
+                          <rect width="7" height="7" x="14" y="14" rx="1" />
+                          <rect width="7" height="7" x="3" y="14" rx="1" />
+                        </svg>
+                      </span>
+                      <span>Сетка</span>
+                    </button>
+                    <button className="flex items-center justify-center gap-2 h-8 px-4 text-[#61896f] text-sm font-medium rounded-full">
+                      <span className="text-base flex items-center">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                          className="lucide lucide-map">
+                          <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6" />
+                          <line x1="9" y1="18" x2="9" y2="6" />
+                          <line x1="15" y1="21" x2="15" y2="9" />
+                        </svg>
+                      </span>
+                      <span>Карта</span>
+                    </button>
+                  </div>
+                </div> */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                  <div className="flex flex-col rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
-                      data-alt="Поющие барханы Алтын-Эмеля на закате"
+                      data-alt="Поющие барханы национального парка Алтын-Эмель на закате"
                       style={{
                         backgroundImage:
                           'url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6x2tfEIiUnSHECM-nS4idhPlv_YlzQwWWlvNE4MxE_GqpshbDDucuAYJ-4aOrENPH1swLvLhdokSkN5oNvoWu3qqZTrHQ41dhVkFmCeZVVGSn-s12S93LGxttnPW_nVW6t8ug4MFll7nRnN-TPRfy6BOsrwczLSGiXd3Dhd1RAPk9vn8BYMsuOQ43DkuJzUPxpyaPF5Je_3ppvSHlKzmz-9bA-I3NX62cL7fI-18N8UJE_MOsRQoKAysEgrVVTrc8WFp7saGGTYI")',
@@ -152,21 +190,25 @@ export default function ToursPage() {
                     />
                     <div className="p-4 flex flex-col gap-3 flex-1">
                       <p className="text-[#111813] text-lg font-bold leading-normal">
-                        Приключение в Национальном парке Алтын-Эмель
+                        Горнолыжный курорт Шымбулак
                       </p>
                       <p className="text-[#61896f] text-sm font-normal leading-normal">
-                        Испытайте поющие барханы и красочные горы в этом
-                        уникальном пустынном парке.
+                        Ключевое горнолыжное направление в горах Тянь-Шаня с захватывающими видами.
                       </p>
                       <p className="text-[#111813] text-base font-semibold leading-normal mt-auto">
-                        От $250
+                        От 120$ / сутки
                       </p>
                     </div>
-                  </Link>
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                    <div className="p-4 pt-0">
+                      <button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex flex-col rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
-                      data-alt="Величественные скальные образования и виды Чарынского каньона"
+                      data-alt="Впечатляющие скальные образования и виды на Чарынский каньон"
                       style={{
                         backgroundImage:
                           'url("https://lh3.googleusercontent.com/aida-public/AB6AXuD1UHBt_RRDl-t8lgnWXzZh5JH1nHHykd7MKbc3q0fu4wwfDkXOGCQ6NeoBi9yxkah_UWeHa5AzpQhuOsieh5waXoC4lV0z2r-sHQKiVy0MNFqbYy_fM_q-3jwuIgnOXSOSEcOs0IRfgZA1CVcqJIpPyi9Bz9kAkwGzbJ1LufcRjMPMaaFrcMtTzyuIIX7GGyf6KbUOPGiWL-KFGh2I6qG7mN5MI92qDOrndBe7rDoXH_S5l6ZPzSbQsgqS7vbtgKCtdx-Hq-gcd-I")',
@@ -174,21 +216,25 @@ export default function ToursPage() {
                     />
                     <div className="p-4 flex flex-col gap-3 flex-1">
                       <p className="text-[#111813] text-lg font-bold leading-normal">
-                        Открытие Чарынского каньона
+                        Rixos Боровое
                       </p>
                       <p className="text-[#61896f] text-sm font-normal leading-normal">
-                        Исследуйте величественные скалы и потрясающие виды
-                        «Казахстанского Гранд Каньона».
+                        Роскошный озёрный велнес-ретрит в самом сердце &quot;Казахской Швейцарии&quot;.
                       </p>
                       <p className="text-[#111813] text-base font-semibold leading-normal mt-auto">
-                        От $180
+                        От 350$ / сутки
                       </p>
                     </div>
-                  </Link>
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                    <div className="p-4 pt-0">
+                      <button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex flex-col rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
-                      data-alt="Зенковский собор в Алматы, красочный деревянный православный храм"
+                      data-alt="Вознесенский собор в Алматы — красочный деревянный православный храм"
                       style={{
                         backgroundImage:
                           'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYGVTzjQNv1kXIRpVqyC-Awb3GwdA8oosm7cAIOHzYozf_xMJoIUPKLXrkHQy2a29J-tkEHdj-hMKyaXtVzUfJDhVP_jGlvj1yMsYTGzITDfnAsSVn2aWd2k_DzdQqQfgIVBaSdoXeOoMh6NuLrEEuyH3Zw-gyllLqhTFPMjrfWDioR1NOtZWbOBTfBu63sIGzGUWxh4Qa_8uxaCyrZAXI845X1Y_yS6W7pnRb7uNR0C_p4hYSfDGSC8l5w16A6NWeST38kKwVfaU")',
@@ -196,21 +242,25 @@ export default function ToursPage() {
                     />
                     <div className="p-4 flex flex-col gap-3 flex-1">
                       <p className="text-[#111813] text-lg font-bold leading-normal">
-                        Культурный тур по Алматы
+                        Горный Лодж &quot;Кольсайские озёра&quot;
                       </p>
                       <p className="text-[#61896f] text-sm font-normal leading-normal">
-                        Погрузитесь в историю и яркую культуру южной столицы
-                        Казахстана.
+                        Деревенский уют и невероятные возможности для хайкинга у чистейших озёр Кольсай.
                       </p>
                       <p className="text-[#111813] text-base font-semibold leading-normal mt-auto">
-                        От $150
+                        От 90$ / сутки
                       </p>
                     </div>
-                  </Link>
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                    <div className="p-4 pt-0">
+                      <button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex flex-col rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
-                      data-alt="Чистейшие бирюзовые воды озера Кольсай, окружённые сосновыми лесами"
+                      data-alt="Чистейшая бирюзовая вода Кольсайского озера в окружении сосновых лесов"
                       style={{
                         backgroundImage:
                           'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAb_7srx9s_sqt30185ObdfziqAyb4M6R6UbfXyRyfcyuhFyb7VU71uG6U7vjYwPTcDCWvSlED4Y_DAFDgmUytBZST31khRXDLKDV-DNdfZLU12sft7jGaYcB4Qe9MTdjs3mQAhBHrhJrid9OKykBHaNF1rY5-N2lB-zmxhb6mDZjCIr17jrhhrKusnikezcRJ7XzRpOwKZIxbVG5xF13wXifqUgSZEKfzZoQ7NbVtwT36XSRLAmBMgynSrpSiykavxDfyPAlDlVKI")',
@@ -218,18 +268,22 @@ export default function ToursPage() {
                     />
                     <div className="p-4 flex flex-col gap-3 flex-1">
                       <p className="text-[#111813] text-lg font-bold leading-normal">
-                        Пеший тур на озёра Кольсай
+                        Санаторий и СПА Сарыагаш
                       </p>
                       <p className="text-[#61896f] text-sm font-normal leading-normal">
-                        Прогуляйтесь по девственным лесам к кристально чистым
-                        водам «Жемчужин Тянь-Шаня».
+                        Известен своими целебными минеральными водами и комплексными программами оздоровления.
                       </p>
                       <p className="text-[#111813] text-base font-semibold leading-normal mt-auto">
-                        От $300
+                        От 150$ / сутки
                       </p>
                     </div>
-                  </Link>
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                    <div className="p-4 pt-0">
+                      <button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex flex-col rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
                       data-alt="Неземные пейзажи и подземные мечети Мангистау"
@@ -240,21 +294,25 @@ export default function ToursPage() {
                     />
                     <div className="p-4 flex flex-col gap-3 flex-1">
                       <p className="text-[#111813] text-lg font-bold leading-normal">
-                        Тайны Мангистау
+                        Ой-Карагай Лесная Сказка
                       </p>
                       <p className="text-[#61896f] text-sm font-normal leading-normal">
-                        Откройте для себя неземные пейзажи, подземные мечети и
-                        древние некрополи.
+                        Круглогодичный горный курорт с активностями от катания на лыжах до верховой езды.
                       </p>
                       <p className="text-[#111813] text-base font-semibold leading-normal mt-auto">
-                        От $450
+                        От 180$ / сутки
                       </p>
                     </div>
-                  </Link>
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                    <div className="p-4 pt-0">
+                      <button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex flex-col rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
-                      data-alt="Футуристическая архитектура города Астана с Байтереком"
+                      data-alt="Футуристическая архитектура Астаны с видом на Байтерек"
                       style={{
                         backgroundImage:
                           'url("https://lh3.googleusercontent.com/aida-public/AB6AXuApyIJL4-s6xKT8GN9_hjtcQu8zR723UjMzj-0bCyGd8cefNZMLGEEAtg9Ab3hwZLrJR-IDQqIXssh-5F0-beXcTZRh4z4RWvU_XE12GAZFazNR3oJX6zNVeEaVou5-3pDUpAv0TsATXIgcc1XZWKq1cG8xelIWGhD9JNDqNYZuLwwTaOorJHJ52LDSIbiGcdrHR2dM7CObgHiLXHKPWg076UYrsz4jzdseXDBlI4D1fL9gtFlkxclgnLQV7GTm4RCMQNI90Hz8zJ0")',
@@ -262,18 +320,23 @@ export default function ToursPage() {
                     />
                     <div className="p-4 flex flex-col gap-3 flex-1">
                       <p className="text-[#111813] text-lg font-bold leading-normal">
-                        Экскурсия по городу Астана
+                        The Ritz-Carlton, Алматы
                       </p>
                       <p className="text-[#61896f] text-sm font-normal leading-normal">
-                        Оцените футуристическую архитектуру и современные чудеса
-                        столицы страны.
+                        Абсолютная роскошь с панорамными видами на город и горы, а также изысканным СПА.
                       </p>
                       <p className="text-[#111813] text-base font-semibold leading-normal mt-auto">
-                        От $120
+                        От 450$ / сутки
                       </p>
                     </div>
-                  </Link>
+                    <div className="p-4 pt-0">
+                      <button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </button>
+                    </div>
+                  </div>
                 </div>
+                {/* Pagination with Lucide chevrons */}
                 <Pagination className="mt-6">
                   <PaginationContent>
                     <PaginationItem>

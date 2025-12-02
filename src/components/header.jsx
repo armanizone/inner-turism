@@ -29,12 +29,30 @@ export const Header = () => {
         >
           Туры
         </Link>
+        <Link
+          className="text-charcoal-gray dark:text-background-light/90 hover:text-primary dark:hover:text-primary text-sm font-medium block md:hidden"
+          href="/resorts"
+        >
+          Санатории
+        </Link>
+        <Link
+          className="text-charcoal-gray dark:text-background-light/90 hover:text-primary dark:hover:text-primary text-sm font-medium block md:hidden"
+          href="/tours"
+        >
+          О нас
+        </Link>
         <nav className="hidden md:flex items-center gap-8">
           <Link
             className="text-charcoal-gray dark:text-background-light/90 hover:text-primary dark:hover:text-primary text-sm font-medium"
             href="/tours"
           >
             Туры
+          </Link>
+          <Link
+            className="text-charcoal-gray dark:text-background-light/90 hover:text-primary dark:hover:text-primary text-sm font-medium"
+            href="/resorts"
+          >
+            Санатории
           </Link>
         </nav>
         <div className="hidden md:flex items-center gap-4">

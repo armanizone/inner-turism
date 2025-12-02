@@ -29,7 +29,7 @@
 
   --color-popover-foreground: var(--popover-foreground);
 
-  --color-primary: var(--primary);
+  --color-primary: var(--color-green-500);
 
   --color-primary-foreground: var(--primary-foreground);
 
