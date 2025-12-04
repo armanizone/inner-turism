@@ -21,6 +21,7 @@ import {
   Hourglass,
   CalendarDays,
 } from "lucide-react";
+import { Slider } from "./ui/slider";
 
 const countries = [
   { id: "usa", label: "США" },
@@ -75,6 +76,24 @@ const datesToGo = [
   { id: "idk", label: "Пока не планирую", icon: Hourglass },
 ];
 
+const ration = [
+  { id: "all", label: "Все включено" },
+  { id: "breakfast-dinner", label: "Завтра+ужин" },
+  { id: "breakfast", label: "Завтрак" },
+  { id: "triple", label: "Завтрак+обед+ужин" },
+  { id: "none", label: "Без питания" },
+  { id: "idk", label: "Пока не знаю" },
+];
+
+const people = [
+  { id: "adult", label: "1 взрослый" },
+  { id: "two-adults", label: "2 взрослых" },
+  { id: "adult-kid", label: "1 взрослый + ребенок" },
+  { id: "two-adults-kid", label: "2 взрослых + ребенок" },
+  { id: "two-adults-two-kids", label: "2 взрослых + 2 ребенка" },
+  { id: "three-adults", label: "3 взрослых" },
+];
+
 const contacts = [
   { id: "wa", label: "WhatsApp", icon: MessageCircle },
   { id: "phone", label: "Номер телефона", icon: Phone },
@@ -89,7 +108,29 @@ export function TourSelectionDialog() {
   const [name, setName] = React.useState("");
   const [phone, setPhone] = React.useState("");
 
-  const totalSteps = 4;
+  const [selectedRation, setSelectedRation] = React.useState("");
+  const [selectedPeople, setSelectedPeople] = React.useState("");
+  const [customPeople, setCustomPeople] = React.useState("")
+
+  const handlePeopleChange = (value) => {
+    setSelectedPeople(value);
+    setCustomPeople('')
+    setTimeout(() => {
+      setStep(6);
+    }, 300);
+  };
+
+  const handleRationChange = (value) => {
+    setSelectedRation(value);
+    setTimeout(() => {
+      setStep(5);
+    }, 300);
+  };
+
+  // Add state for tour duration selection
+  const [tourDuration, setTourDuration] = React.useState("");
+
+  const totalSteps = 7;
   const progress = (step / totalSteps) * 100;
 
   const handleCountryChange = (value) => {
@@ -109,7 +150,7 @@ export function TourSelectionDialog() {
   const handleContactChange = (value) => {
     setSelectedContact(value);
     setTimeout(() => {
-      setStep(4);
+      setStep(7);
     }, 300);
   };
 
@@ -142,8 +183,11 @@ export function TourSelectionDialog() {
   const canProceed =
     (step === 1 && selectedCountry) ||
     (step === 2 && selectedTimeframe) ||
-    (step === 3 && selectedContact) ||
-    (step === 4 && name && phone);
+    (step === 3 && tourDuration) ||
+    (step === 4 && selectedRation) ||
+    (step === 5 && (selectedPeople || customPeople)) ||
+    (step === 6 && selectedContact) ||
+    (step === 7 && name && phone);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -167,11 +211,11 @@ export function TourSelectionDialog() {
                   value={selectedCountry}
                   onValueChange={handleCountryChange}
                 >
-                  <div className="space-y-3 grid grid-cols-2">
+                  <div className="gap-3 grid grid-cols-2 mr-3">
                     {countries.map((country) => (
                       <div
                         key={country.id}
-                        className="flex items-center space-x-3"
+                        className="flex items-center space-x-3 border p-3 rounded-xl"
                       >
                         <RadioGroupItem value={country.id} id={country.id} />
                         <Label
@@ -202,7 +246,7 @@ export function TourSelectionDialog() {
                     {datesToGo.map((date) => (
                       <div
                         key={date.id}
-                        className="flex items-center space-x-3"
+                        className="flex items-center space-x-3 border p-3 rounded-xl"
                       >
                         <RadioGroupItem value={date.id} id={date.id} />
                         <Label
@@ -226,6 +270,122 @@ export function TourSelectionDialog() {
             <div className="min-w-full p-6">
               <DialogHeader>
                 <DialogTitle className="text-2xl">
+                  Какая интересует продолжительность тура?
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="mt-6 space-y-6">
+                <div className="flex items-center justify-between">
+                  <Input
+                    id="duration-input"
+                    // type="number"
+                    // min={5}
+                    // max={28}
+                    value={tourDuration}
+                    onChange={(e) => {
+                      console.log(e?.target?.value, "zxc");
+                      setTourDuration(Number(e.target.value));
+                    }}
+                    className="w-20"
+                  />
+                </div>
+                <Slider
+                  id="duration-slider"
+                  min={5}
+                  max={28}
+                  defaultValue={[5]}
+                  onValueChange={(e) => {
+                    setTourDuration(Number(e));
+                  }}
+                  className="w-full"
+                />
+                <div className="grid place-items-center min-h-full w-full">
+                  <Label
+                    htmlFor="duration-slider"
+                    className="text-base font-normal"
+                  >
+                    Дней: {tourDuration}
+                  </Label>
+                </div>
+              </div>
+            </div>
+
+            <div className="min-w-full p-6">
+              <DialogHeader>
+                <DialogTitle className="text-2xl">
+                  Какой тип питания предпочитаете?
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="mt-6 space-y-6">
+                <RadioGroup
+                  value={selectedRation}
+                  onValueChange={handleRationChange}
+                >
+                  <div className="gap-3 grid grid-cols-2">
+                    {ration.map((option) => (
+                      <div
+                        key={option.id}
+                        className="flex items-center space-x-3 border p-3 rounded-xl"
+                      >
+                        <RadioGroupItem value={option.id} id={option.id} />
+                        <Label
+                          htmlFor={option.id}
+                          className="text-base font-normal cursor-pointer flex-1"
+                        >
+                          {option.label}
+                        </Label>
+                      </div>
+                    ))}
+                  </div>
+                </RadioGroup>
+              </div>
+            </div>
+
+            <div className="min-w-full p-6">
+              <DialogHeader>
+                <DialogTitle className="text-2xl">
+                  Каким составом поедете?
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="mt-6 space-y-6">
+                <RadioGroup
+                  value={selectedPeople}
+                  onValueChange={handlePeopleChange}
+                >
+                  <div className="gap-3 grid grid-cols-2">
+                    {people.map((option) => (
+                      <div
+                        key={option.id}
+                        className="flex items-center space-x-3 border p-3 rounded-xl"
+                      >
+                        <RadioGroupItem value={option.id} id={option.id} />
+                        <Label
+                          htmlFor={option.id}
+                          className="text-base font-normal cursor-pointer flex-1"
+                        >
+                          {option.label}
+                        </Label>
+                      </div>
+                    ))}
+                  </div>
+                </RadioGroup>
+                <Input
+                  placeholder="Другое"
+                  className="max-w-96"
+                  value={customPeople}
+                  onChange={(e) => {
+                    setCustomPeople(e?.target?.value);
+                    setSelectedPeople("")
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="min-w-full p-6">
+              <DialogHeader>
+                <DialogTitle className="text-2xl">
                   Как с вами связаться?
                 </DialogTitle>
               </DialogHeader>
@@ -240,7 +400,7 @@ export function TourSelectionDialog() {
                       return (
                         <div
                           key={contact.id}
-                          className="flex items-center space-x-3"
+                          className="flex items-center space-x-3 border p-3 rounded-xl"
                         >
                           <RadioGroupItem value={contact.id} id={contact.id} />
                           <Label
