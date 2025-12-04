@@ -1,0 +1,328 @@
+"use client";
+
+import * as React from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import {
+  AlarmClock,
+  CalendarClock,
+  CalendarRange,
+  Phone,
+  MessageCircle,
+  Hourglass,
+  CalendarDays,
+} from "lucide-react";
+
+const countries = [
+  { id: "usa", label: "США" },
+  { id: "uk", label: "Великобритания" },
+  { id: "france", label: "Франция" },
+  { id: "germany", label: "Германия" },
+  { id: "japan", label: "Япония" },
+  { id: "italy", label: "Италия" },
+  { id: "spain", label: "Испания" },
+  { id: "turkey", label: "Турция" },
+  { id: "china", label: "Китай" },
+  { id: "uae", label: "ОАЭ" },
+  { id: "egypt", label: "Египет" },
+  { id: "thailand", label: "Таиланд" },
+  { id: "india", label: "Индия" },
+  { id: "australia", label: "Австралия" },
+  { id: "brazil", label: "Бразилия" },
+  { id: "canada", label: "Канада" },
+  { id: "greece", label: "Греция" },
+  { id: "south_korea", label: "Южная Корея" },
+  { id: "mexico", label: "Мексика" },
+  { id: "maldives", label: "Мальдивы" },
+  { id: "indonesia", label: "Индонезия" },
+  { id: "morocco", label: "Марокко" },
+  { id: "switzerland", label: "Швейцария" },
+  { id: "sweden", label: "Швеция" },
+  { id: "finland", label: "Финляндия" },
+  { id: "norway", label: "Норвегия" },
+  { id: "portugal", label: "Португалия" },
+  { id: "netherlands", label: "Нидерланды" },
+  { id: "austria", label: "Австрия" },
+  { id: "czech", label: "Чехия" },
+  { id: "hungary", label: "Венгрия" },
+  { id: "poland", label: "Польша" },
+  { id: "belgium", label: "Бельгия" },
+  { id: "new_zealand", label: "Новая Зеландия" },
+  { id: "argentina", label: "Аргентина" },
+  { id: "chile", label: "Чили" },
+  { id: "israel", label: "Израиль" },
+  { id: "singapore", label: "Сингапур" },
+  { id: "south_africa", label: "ЮАР" },
+  { id: "dominican", label: "Доминикана" },
+  { id: "vietnam", label: "Вьетнам" },
+  { id: "sri_lanka", label: "Шри-Ланка" },
+];
+
+const datesToGo = [
+  { id: "soon", label: "В самое ближайшее время", icon: AlarmClock },
+  { id: "weeks", label: "Не ранее чем через 2-3 недели", icon: CalendarClock },
+  { id: "months", label: "Через 1-2 месяца", icon: CalendarRange },
+  { id: "later", label: "Не ранее чем через 2 месяца", icon: CalendarDays },
+  { id: "idk", label: "Пока не планирую", icon: Hourglass },
+];
+
+const contacts = [
+  { id: "wa", label: "WhatsApp", icon: MessageCircle },
+  { id: "phone", label: "Номер телефона", icon: Phone },
+];
+
+export function TourSelectionDialog() {
+  const [open, setOpen] = React.useState(false);
+  const [step, setStep] = React.useState(1);
+  const [selectedCountry, setSelectedCountry] = React.useState("");
+  const [selectedTimeframe, setSelectedTimeframe] = React.useState("");
+  const [selectedContact, setSelectedContact] = React.useState("");
+  const [name, setName] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+
+  const totalSteps = 4;
+  const progress = (step / totalSteps) * 100;
+
+  const handleCountryChange = (value) => {
+    setSelectedCountry(value);
+    setTimeout(() => {
+      setStep(2);
+    }, 300);
+  };
+
+  const handleTimeframeChange = (value) => {
+    setSelectedTimeframe(value);
+    setTimeout(() => {
+      setStep(3);
+    }, 300);
+  };
+
+  const handleContactChange = (value) => {
+    setSelectedContact(value);
+    setTimeout(() => {
+      setStep(4);
+    }, 300);
+  };
+
+  const handleNext = () => {
+    if (step < totalSteps) {
+      setStep(step + 1);
+    }
+  };
+
+  const handleSubmit = () => {
+    console.log({
+      country: selectedCountry,
+      timeframe: selectedTimeframe,
+      contactMethod: selectedContact,
+      name,
+      phone,
+    });
+    setOpen(false);
+    // Reset on close
+    setTimeout(() => {
+      setStep(1);
+      setSelectedCountry("");
+      setSelectedTimeframe("");
+      setSelectedContact("");
+      setName("");
+      setPhone("");
+    }, 300);
+  };
+
+  const canProceed =
+    (step === 1 && selectedCountry) ||
+    (step === 2 && selectedTimeframe) ||
+    (step === 3 && selectedContact) ||
+    (step === 4 && name && phone);
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button size="lg">Спланировать поездку</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[700px] h-full max-h-[45vh] overflow-hidden p-0">
+        <div className="relative overflow-hidden">
+          {/* Sliding container */}
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${(step - 1) * 100}%)` }}
+          >
+            {/* Step 1: Country Selection */}
+            <div className="min-w-full p-6">
+              <DialogHeader>
+                <DialogTitle className="text-2xl">Выберите страну</DialogTitle>
+              </DialogHeader>
+              <div className="mt-6 max-h-64 overflow-y-scroll">
+                <RadioGroup
+                  value={selectedCountry}
+                  onValueChange={handleCountryChange}
+                >
+                  <div className="space-y-3 grid grid-cols-2">
+                    {countries.map((country) => (
+                      <div
+                        key={country.id}
+                        className="flex items-center space-x-3"
+                      >
+                        <RadioGroupItem value={country.id} id={country.id} />
+                        <Label
+                          htmlFor={country.id}
+                          className="text-base font-normal cursor-pointer flex-1"
+                        >
+                          {country.label}
+                        </Label>
+                      </div>
+                    ))}
+                  </div>
+                </RadioGroup>
+              </div>
+            </div>
+
+            <div className="min-w-full p-6">
+              <DialogHeader>
+                <DialogTitle className="text-2xl">
+                  Когда планируете?
+                </DialogTitle>
+              </DialogHeader>
+              <div className="mt-6">
+                <RadioGroup
+                  value={selectedTimeframe}
+                  onValueChange={handleTimeframeChange}
+                >
+                  <div className="grid grid-cols-2 gap-4">
+                    {datesToGo.map((date) => (
+                      <div
+                        key={date.id}
+                        className="flex items-center space-x-3"
+                      >
+                        <RadioGroupItem value={date.id} id={date.id} />
+                        <Label
+                          htmlFor={date.id}
+                          className="text-base font-normal cursor-pointer flex-1 flex items-center gap-2"
+                        >
+                          {date.icon && (
+                            <span className="inline-flex items-center">
+                              <date.icon className="h-5 w-5" />
+                            </span>
+                          )}
+                          {date.label}
+                        </Label>
+                      </div>
+                    ))}
+                  </div>
+                </RadioGroup>
+              </div>
+            </div>
+
+            <div className="min-w-full p-6">
+              <DialogHeader>
+                <DialogTitle className="text-2xl">
+                  Как с вами связаться?
+                </DialogTitle>
+              </DialogHeader>
+              <div className="mt-6">
+                <RadioGroup
+                  value={selectedContact}
+                  onValueChange={handleContactChange}
+                >
+                  <div className="space-y-3">
+                    {contacts.map((contact) => {
+                      const Icon = contact.icon;
+                      return (
+                        <div
+                          key={contact.id}
+                          className="flex items-center space-x-3"
+                        >
+                          <RadioGroupItem value={contact.id} id={contact.id} />
+                          <Label
+                            htmlFor={contact.id}
+                            className="text-base font-normal cursor-pointer flex-1 flex items-center gap-2"
+                          >
+                            <Icon className="h-5 w-5" />
+                            {contact.label}
+                          </Label>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </RadioGroup>
+              </div>
+            </div>
+
+            <div className="min-w-full p-6">
+              <DialogHeader>
+                <DialogTitle className="text-2xl">Ваши контакты</DialogTitle>
+              </DialogHeader>
+              <div className="mt-6 space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Номер телефона</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="+7 (___) ___-__-__"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="name">Имя</Label>
+                  <Input
+                    id="name"
+                    placeholder="Введите ваше имя"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <Button size="lg">Подберите мне тур</Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Progress Bar and Navigation Buttons */}
+        <div className="px-6 pb-6 space-y-4 mt-auto">
+          <div className="space-y-2">
+            <div className="flex gap-2 text-sm text-muted-foreground">
+              <span>Готово:</span>
+              <span className="text-primary">{Math.round(progress)}%</span>
+            </div>
+            <div className="h-2 w-full bg-secondary rounded-full overflow-hidden">
+              <div
+                className="h-full bg-primary transition-all duration-500 ease-out"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
+
+          <div className="flex justify-between items-center">
+            {step > 1 && (
+              <Button variant="outline" onClick={() => setStep(step - 1)}>
+                Назад
+              </Button>
+            )}
+            {step !== totalSteps && (
+              <Button
+                onClick={step === totalSteps ? handleSubmit : handleNext}
+                disabled={!canProceed}
+                className="ml-auto"
+              >
+                Далее
+              </Button>
+            )}
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}

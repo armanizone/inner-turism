@@ -131,7 +131,7 @@ export default function ToursPage() {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row lg:flex-col gap-2 pt-2">
-                  <Button variant="primary">
+                  <Button >
                     Применить фильтры
                   </Button>
                   <Button variant="secondary">

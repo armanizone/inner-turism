@@ -140,7 +140,7 @@ export default function ResortsPage() {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row lg:flex-col gap-2 pt-2">
-                  <Button variant="primary">
+                  <Button>
                     Применить фильтры
                   </Button>
                   <Button variant="secondary">
@@ -200,9 +200,9 @@ export default function ResortsPage() {
                       </p>
                     </div>
                     <div className="p-4 pt-0">
-                      <button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                      <Button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
                         Подробнее
-                      </button>
+                      </Button>
                     </div>
                   </div>
                   <div className="flex flex-col rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">

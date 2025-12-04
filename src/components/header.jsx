@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
+import { TourSelectionDialog } from "./tour-selection";
 
 export const Header = () => {
   return (
@@ -54,11 +55,15 @@ export const Header = () => {
           >
             Санатории
           </Link>
+          <Link
+            className="text-charcoal-gray dark:text-background-light/90 hover:text-primary dark:hover:text-primary text-sm font-medium"
+            href="/about"
+          >
+            О нас
+          </Link>
         </nav>
         <div className="hidden md:flex items-center gap-4">
-          <Button>
-            <span>Спланировать поездку</span>
-          </Button>
+          <TourSelectionDialog/>
         </div>
       </div>
     </header>

@@ -18,6 +18,11 @@ const nextConfig = {
       new URL('https://lh3.googleusercontent.com/aida-public/AB6AXuCi5Lzmb7iC6j5aIbQmCp3om7dlsd9AHRct8F6xniomvJKjVlWs8iQ61kYl7CtbM-X1AZ4BxZPYrce7pnCA67rZR2iVknGhYlD_BoK9H0rND9RlBnIMcUImbzWsTS77x1OFXraBx0QshnoBW3mgQ86YyFZS4k_FR_gnWYnEgQurF2aNsNLLPRkWjYUuJueYfpt7HHs0wGRxPcPIneZhS4IDZaPm4GOxyVO2K1y-TL9beWWYYAT1NJl5glitvw77PJj9hRQXAlsQCTc'),
       new URL('https://lh3.googleusercontent.com/aida-public/AB6AXuDIA9nrStoUDCuEc0A_sJCl-VJokrkJKU0-wa2epnmLYX_BjjzE993EeZArXCmeT--f_BtMZosiFkBJAPAUZfneds1PtjedSayEFoFpEvwfbRA5tAQBYdjxRYRNUgfNqzCaAHv-_50RjwRKSn0CyJ5vJqUDv-x504Pi7h_jh4I2SLJf7l96Su56ppvJJbh3qI4EWT4jzLJT9aNd12HA9361V09Z5TCQiBFQroimXAPO5_mS02hYEUgVf4Ag89S4GtAB2x9pZ0UGwSM'),
       new URL('https://lh3.googleusercontent.com/aida-public/AB6AXuChdhiy3H6xw-VhNzDm5nI4Sw7B9DhW5cj88ixMcCzQaniukv2IiBWpZf6qRrEOaBH_ZfcJonxZlhxVDiqjTOBLooWy7UrI9v6ng47VQToA4rjBsknc74iYWjwm7poYNdJelbVFrqIVT_3dy37ttNxh4WPZmYQVSePH7PUWKNrIXcm9Xb5XmJV2ctpYL6BWCkmCbFLyn1df9KM68OeL4_ZTHZA2d1SDNxnsQ4BOXoZS2pxwmFk8_lnT64Q9HZIJjdSigk15ykpK9zs'),
+
+      new URL('https://randomuser.me/api/portraits/men/20.jpg'),
+      new URL('https://randomuser.me/api/portraits/women/32.jpg'),
+      new URL('https://randomuser.me/api/portraits/men/33.jpg'),
+
     ],
   },
 };
