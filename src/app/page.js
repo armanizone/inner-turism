@@ -12,6 +12,8 @@ import {
   BookOpenCheck,
 } from "lucide-react";
 
+import { PacksBlock } from "@/components/packs-block";
+
 export default function Home() {
   return (
     <div className="relative w-full overflow-x-hidden font-display">
@@ -553,6 +555,9 @@ export default function Home() {
           </section>
         </div>
       </main>
+
+      <PacksBlock/>
+
       <footer className="bg-charcoal-gray bg-black/50 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
@@ -571,9 +576,7 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <h2 className="text-white text-xl font-bold">
-                  Ozelim
-                </h2>
+                <h2 className="text-white text-xl font-bold">Ozelim</h2>
               </div>
               <p className="mt-4 text-white/70 text-sm">
                 Ваше приключение в сердце Евразии начинается здесь!
