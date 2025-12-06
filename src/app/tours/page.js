@@ -1,6 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationNext, PaginationEllipsis } from "@/components/ui/pagination";
-import Link from 'next/link'
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationLink,
+  PaginationNext,
+  PaginationEllipsis,
+} from "@/components/ui/pagination";
+import Link from "next/link";
 
 export const metadata = {
   title: "Туры",
@@ -30,16 +38,26 @@ export default function ToursPage() {
   return (
     <div className="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden font-display">
       <div className="layout-container flex h-full grow flex-col">
-
         <main className="flex flex-col flex-1 items-center px-4 pt-20">
           <div className="layout-content-container flex flex-col w-full max-w-6xl flex-1">
             <div className="flex flex-col lg:flex-row gap-6 p-4 items-start">
               <div className="flex flex-col gap-4 w-full lg:w-1/4 p-4 bg-white rounded-xl shadow-sm border border-[#f0f4f2] lg:sticky lg:top-24">
                 <div className="relative w-full">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#61896f]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-search" viewBox="0 0 24 24">
-                      <circle cx="11" cy="11" r="8"/>
-                      <path d="m21 21-4.3-4.3"/>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-search"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle cx="11" cy="11" r="8" />
+                      <path d="m21 21-4.3-4.3" />
                     </svg>
                   </span>
                   <input
@@ -131,17 +149,16 @@ export default function ToursPage() {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row lg:flex-col gap-2 pt-2">
-                  <Button >
-                    Применить фильтры
-                  </Button>
-                  <Button variant="secondary">
-                    Сбросить
-                  </Button>
+                  <Button>Применить фильтры</Button>
+                  <Button variant="secondary">Сбросить</Button>
                 </div>
               </div>
               <div className="flex-1">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                  <Link
+                    href="/tours/1"
+                    className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg"
+                  >
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
                       data-alt="Поющие барханы Алтын-Эмеля на закате"
@@ -162,8 +179,16 @@ export default function ToursPage() {
                         От $250
                       </p>
                     </div>
+                    <div className="p-4 pt-0">
+                      <Button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </Button>
+                    </div>
                   </Link>
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                  <Link
+                    href="/tours/1"
+                    className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg"
+                  >
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
                       data-alt="Величественные скальные образования и виды Чарынского каньона"
@@ -184,8 +209,16 @@ export default function ToursPage() {
                         От $180
                       </p>
                     </div>
+                    <div className="p-4 pt-0">
+                      <Button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </Button>
+                    </div>
                   </Link>
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                  <Link
+                    href="/tours/1"
+                    className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg"
+                  >
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
                       data-alt="Зенковский собор в Алматы, красочный деревянный православный храм"
@@ -206,8 +239,16 @@ export default function ToursPage() {
                         От $150
                       </p>
                     </div>
+                    <div className="p-4 pt-0">
+                      <Button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </Button>
+                    </div>
                   </Link>
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                  <Link
+                    href="/tours/1"
+                    className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg"
+                  >
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
                       data-alt="Чистейшие бирюзовые воды озера Кольсай, окружённые сосновыми лесами"
@@ -228,8 +269,16 @@ export default function ToursPage() {
                         От $300
                       </p>
                     </div>
+                    <div className="p-4 pt-0">
+                      <Button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </Button>
+                    </div>
                   </Link>
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                  <Link
+                    href="/tours/1"
+                    className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg"
+                  >
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
                       data-alt="Неземные пейзажи и подземные мечети Мангистау"
@@ -250,8 +299,16 @@ export default function ToursPage() {
                         От $450
                       </p>
                     </div>
+                    <div className="p-4 pt-0">
+                      <Button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </Button>
+                    </div>
                   </Link>
-                  <Link href="/tours/1" className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg">
+                  <Link
+                    href="/tours/1"
+                    className="flex flex-col gap-3 pb-3 rounded-xl bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-lg"
+                  >
                     <div
                       className="w-full bg-center bg-no-repeat aspect-video bg-cover"
                       data-alt="Футуристическая архитектура города Астана с Байтереком"
@@ -271,6 +328,11 @@ export default function ToursPage() {
                       <p className="text-[#111813] text-base font-semibold leading-normal mt-auto">
                         От $120
                       </p>
+                    </div>
+                    <div className="p-4 pt-0">
+                      <Button className="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]">
+                        Подробнее
+                      </Button>
                     </div>
                   </Link>
                 </div>

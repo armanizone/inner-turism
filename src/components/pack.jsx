@@ -1,13 +1,34 @@
-"use client"
+"use client";
 
 import { formatNumber } from "@/lib/utils";
-import { Button } from "./ui/button";
-import {clsx} from 'clsx'
-import Image from "next/image";
+import { clsx } from "clsx";
+import { Check } from "lucide-react";
 
-export const Pack = ({ type, price, image, people, children, discount, benefits, onClick }) => {
+const COLORS = [
+  "#10b981", // emerald-500
+  "#f59e42", // orange-400
+  "#f43f5e", // rose-500
+  "#3b82f6", // blue-500
+  "#eab308", // yellow-500
+  "#a855f7", // purple-500
+  "#0ea5e9", // sky-500
+  "#84cc16", // lime-500
+];
+
+export const Pack = ({
+  type,
+  price,
+  image,
+  people,
+  children,
+  discount,
+  benefits,
+  bonuses,
+  onClick,
+}) => {
+
   return (
-    <button
+    <div
       onClick={onClick}
       title={
         (type === "family" && "Приобрести пакет для семьи") ||
@@ -16,18 +37,20 @@ export const Pack = ({ type, price, image, people, children, discount, benefits,
         (type === "company+" && "Приобрести пакет для компании +")
       }
       className={clsx(
-        "max-w-[313px] bg-white h-full rounded-primary shadow-equal overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-all duration-200 focus:scale-105 border rounded-xl"
+        "max-w-[554px] mx-auto bg-white h-full rounded-primary shadow-equal overflow-hidden flex flex-col cursor-pointer hover:scale-105 transition-all duration-200 focus:scale-105 border rounded-xl"
       )}
     >
-      <Image src={image} alt="" className="aspect-video object-contain border-b-black p-1" />
+      {/* <Image src={image} alt="" className="aspect-video object-contain border-b-black p-1" /> */}
       <div className={clsx("px-6 h-full flex flex-col mt-6")}>
         {/* <p className={clsx("text-center my-4 font-medium")}>1 год</p> */}
-        <p className={clsx("text-2xl text-center leading-4 font-bold", {
-          "text-green-500": type === "agent",
-          "text-orange-500": type === "family",
-          "text-rose-500": type === "company",
-          "text-blue-500": type === "company+",
-        })}>
+        <p
+          className={clsx("text-3xl leading-4 font-bold text-center", {
+            "text-green-500": type === "agent",
+            "text-orange-500": type === "family",
+            "text-rose-500": type === "company",
+            "text-blue-500": type === "company+",
+          })}
+        >
           {type === "family" && "Семейный"}
           {type === "agent" && "Агентский"}
           {type === "company" && "Корпоративный"}
@@ -41,11 +64,17 @@ export const Pack = ({ type, price, image, people, children, discount, benefits,
             </p>
             <ul className="flex flex-col justify-center mt-1">
               {benefits?.map((benefit, i) => (
-                <li 
-                  key={i} 
-                  className="tracking-wide font-medium flex flex-col justify-center"
+                <li
+                  key={i}
+                  className="tracking-wide font-medium flex items-center"
                 >
-                • {benefit}
+                  <Check
+                    className="w-5 h-5 mr-2"
+                    style={{
+                      color: COLORS[i],
+                    }}
+                  />
+                  {benefit}
                 </li>
               ))}
             </ul>
@@ -59,11 +88,17 @@ export const Pack = ({ type, price, image, people, children, discount, benefits,
             </p>
             <ul className="flex flex-col justify-center mt-1">
               {benefits?.map((benefit, i) => (
-                <li 
-                  key={i} 
-                  className="tracking-wide font-medium flex flex-col justify-center"
+                <li
+                  key={i}
+                  className="tracking-wide font-medium flex items-center"
                 >
-                • {benefit}
+                  <Check
+                    className="w-5 h-5 mr-2"
+                    style={{
+                      color: COLORS[i],
+                    }}
+                  />
+                  {benefit}
                 </li>
               ))}
             </ul>
@@ -72,16 +107,22 @@ export const Pack = ({ type, price, image, people, children, discount, benefits,
 
         {type === "family" && (
           <>
-            <p className="text-center tracking-wide font-medium flex flex-col justify-center mt-4">
+            <p className="text-center tracking-wide font-medium flex flex-col mt-4">
               &quot;Все включено&quot;
             </p>
-            <ul className="flex flex-col justify-center mt-1">
+            <ul className="mt-1">
               {benefits?.map((benefit, i) => (
-                <li 
-                  key={i} 
-                  className="tracking-wide font-medium flex flex-col justify-center"
+                <li
+                  key={i}
+                  className="tracking-wide font-medium text-left flex items-center"
                 >
-                • {benefit}
+                  <Check
+                    className="w-5 h-5 mr-2"
+                    style={{
+                      color: COLORS[i],
+                    }}
+                  />
+                  {benefit}
                 </li>
               ))}
             </ul>
@@ -90,13 +131,22 @@ export const Pack = ({ type, price, image, people, children, discount, benefits,
 
         {type === "agent" && (
           <>
+            <p className="text-center tracking-wide font-medium flex flex-col justify-center mt-4">
+              &quot;Все включено&quot;
+            </p>
             <ul className="flex flex-col justify-center mt-4">
               {benefits?.map((benefit, i) => (
-                <li 
-                  key={i} 
-                  className="tracking-wide font-medium flex flex-col justify-center"
+                <li
+                  key={i}
+                  className="tracking-wide font-medium flex items-center"
                 >
-                • {benefit}
+                  <Check
+                    className="w-5 h-5 mr-2"
+                    style={{
+                      color: COLORS[i],
+                    }}
+                  />
+                  {benefit}
                 </li>
               ))}
             </ul>
@@ -109,13 +159,16 @@ export const Pack = ({ type, price, image, people, children, discount, benefits,
           </p>
         )} */}
       </div>
-      <p className="text-center font-medium my-4 text-slate-400">Годовая подписка</p>
+      <p className="text-center font-medium my-4 text-slate-400">
+        Годовая подписка
+      </p>
       <div
         className={clsx(
           "grid grid-cols-3 items-center justify-center text-white font-semibold text-sm border-t",
           {
             "bg-linear-to-l from-orange-400 to-orange-600": type === "family",
-            "bg-linear-to-r from-green-400 to-green-600": type === "agent",
+            "bg-linear-to-r from-green-400 to-green-600 grid-cols-4":
+              type === "agent",
             "bg-linear-to-r from-rose-400 to-rose-600": type === "company",
             "bg-linear-to-l from-blue-400 to-blue-600": type === "company+",
           }
@@ -123,7 +176,7 @@ export const Pack = ({ type, price, image, people, children, discount, benefits,
       >
         <div className="grid place-items-center p-4 text-center border-r h-full">
           {children ? (
-            <p className="whitespace-nowrap">
+            <p className="md:whitespace-nowrap">
               {people} взрослых
               <br />+ {children} детей
             </p>
@@ -134,8 +187,18 @@ export const Pack = ({ type, price, image, people, children, discount, benefits,
         <div className="grid place-items-center p-4 text-center border-r whitespace-nowrap h-full">
           {formatNumber(price)} ₸
         </div>
-        <div className="grid place-items-center p-4 text-center">Скидки на туры до {discount}%</div>
+        <div
+          className={clsx("grid place-items-center p-4 text-center", {
+            "border-r": bonuses,
+          })}
+        >
+          Скидки на туры до {discount}%
+        </div>
+
+        {bonuses && (
+          <div className="grid place-items-center p-4 text-center">Бонусы</div>
+        )}
       </div>
-    </button>
-  )
-}
+    </div>
+  );
+};

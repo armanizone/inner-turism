@@ -194,7 +194,7 @@ export function TourSelectionDialog() {
       <DialogTrigger asChild>
         <Button size="lg">Спланировать поездку</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[700px] h-full max-h-[45vh] overflow-hidden p-0">
+      <DialogContent className="sm:max-w-[700px] h-full max-h-[600px] overflow-hidden p-0">
         <div className="relative overflow-hidden">
           {/* Sliding container */}
           <div
@@ -204,9 +204,9 @@ export function TourSelectionDialog() {
             {/* Step 1: Country Selection */}
             <div className="min-w-full p-6">
               <DialogHeader>
-                <DialogTitle className="text-2xl">Выберите страну</DialogTitle>
+                <DialogTitle className="text-2xl">Выберите направление</DialogTitle>
               </DialogHeader>
-              <div className="mt-6 max-h-64 overflow-y-scroll">
+              <div className="mt-6 max-h-[600px] overflow-y-scroll">
                 <RadioGroup
                   value={selectedCountry}
                   onValueChange={handleCountryChange}
