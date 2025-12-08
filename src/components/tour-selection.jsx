@@ -23,49 +23,9 @@ import {
 } from "lucide-react";
 import { Slider } from "./ui/slider";
 
-const countries = [
-  { id: "usa", label: "США" },
-  { id: "uk", label: "Великобритания" },
-  { id: "france", label: "Франция" },
-  { id: "germany", label: "Германия" },
-  { id: "japan", label: "Япония" },
-  { id: "italy", label: "Италия" },
-  { id: "spain", label: "Испания" },
-  { id: "turkey", label: "Турция" },
-  { id: "china", label: "Китай" },
-  { id: "uae", label: "ОАЭ" },
-  { id: "egypt", label: "Египет" },
-  { id: "thailand", label: "Таиланд" },
-  { id: "india", label: "Индия" },
-  { id: "australia", label: "Австралия" },
-  { id: "brazil", label: "Бразилия" },
-  { id: "canada", label: "Канада" },
-  { id: "greece", label: "Греция" },
-  { id: "south_korea", label: "Южная Корея" },
-  { id: "mexico", label: "Мексика" },
-  { id: "maldives", label: "Мальдивы" },
-  { id: "indonesia", label: "Индонезия" },
-  { id: "morocco", label: "Марокко" },
-  { id: "switzerland", label: "Швейцария" },
-  { id: "sweden", label: "Швеция" },
-  { id: "finland", label: "Финляндия" },
-  { id: "norway", label: "Норвегия" },
-  { id: "portugal", label: "Португалия" },
-  { id: "netherlands", label: "Нидерланды" },
-  { id: "austria", label: "Австрия" },
-  { id: "czech", label: "Чехия" },
-  { id: "hungary", label: "Венгрия" },
-  { id: "poland", label: "Польша" },
-  { id: "belgium", label: "Бельгия" },
-  { id: "new_zealand", label: "Новая Зеландия" },
-  { id: "argentina", label: "Аргентина" },
-  { id: "chile", label: "Чили" },
-  { id: "israel", label: "Израиль" },
-  { id: "singapore", label: "Сингапур" },
-  { id: "south_africa", label: "ЮАР" },
-  { id: "dominican", label: "Доминикана" },
-  { id: "vietnam", label: "Вьетнам" },
-  { id: "sri_lanka", label: "Шри-Ланка" },
+const type = [
+  { id: "turism", label: "Туризм" },
+  { id: "resorts", label: "Санатории" },
 ];
 
 const datesToGo = [
@@ -206,13 +166,13 @@ export function TourSelectionDialog() {
               <DialogHeader>
                 <DialogTitle className="text-2xl">Выберите направление</DialogTitle>
               </DialogHeader>
-              <div className="mt-6 max-h-[600px] overflow-y-scroll">
+              <div className="mt-6 max-h-[600px]">
                 <RadioGroup
                   value={selectedCountry}
                   onValueChange={handleCountryChange}
                 >
                   <div className="gap-3 grid grid-cols-2 mr-3">
-                    {countries.map((country) => (
+                    {type.map((country) => (
                       <div
                         key={country.id}
                         className="flex items-center space-x-3 border p-3 rounded-xl"
