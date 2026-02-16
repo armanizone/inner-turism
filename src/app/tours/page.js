@@ -9,6 +9,11 @@ import {
   PaginationEllipsis,
 } from "@/components/ui/pagination";
 import Link from "next/link";
+import { ToursFilter } from "./tours-filter";
+import InteractiveMap from "./(map)/interactive-map";
+import { MapPin } from "lucide-react";
+import { tours } from "./tours-data";
+import { TourCard } from "./tour-card";
 
 export const metadata = {
   title: "Туры",
@@ -35,12 +40,19 @@ export const metadata = {
 };
 
 export default function ToursPage() {
+
   return (
     <div className="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden font-display">
       <div className="layout-container flex h-full grow flex-col">
+        <div className="max-w-6xl mx-auto w-full mt-8">
+          <InteractiveMap />
+        </div>
+        
+
         <main className="flex flex-col flex-1 items-center px-4 pt-20">
           <div className="layout-content-container flex flex-col w-full max-w-6xl flex-1">
-            <div className="flex flex-col lg:flex-row gap-6 p-4 items-start">
+              <ToursFilter/>
+            {/* <div className="flex flex-col lg:flex-row gap-6 pt-4 items-start">
               <div className="flex flex-col gap-4 w-full lg:w-1/4 p-4 bg-white rounded-xl shadow-sm border border-[#f0f4f2] lg:sticky lg:top-24">
                 <div className="relative w-full">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#61896f]">
@@ -353,7 +365,27 @@ export default function ToursPage() {
                   </PaginationContent>
                 </Pagination>
               </div>
+            </div> */}
+
+        {tours.length > 0 ? (
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {tours.map((tour) => (
+              <TourCard key={tour.id} tour={tour} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-20 flex flex-col items-center text-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+              <MapPin className="h-8 w-8 text-muted-foreground" />
             </div>
+            <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+              {"Ничего не найдено"}
+            </h3>
+            <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+              {"Попробуйте изменить параметры фильтрации или поисковый запрос"}
+            </p>
+          </div>
+        )}
           </div>
         </main>
       </div>

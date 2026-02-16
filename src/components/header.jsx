@@ -36,12 +36,12 @@ export const Header = () => {
         >
           Санатории
         </Link>
-        <Link
+        {/* <Link
           className="text-charcoal-gray dark:text-background-light/90 hover:text-primary dark:hover:text-primary text-sm font-medium block md:hidden"
           href="/tours"
         >
           О нас
-        </Link>
+        </Link> */}
         <nav className="hidden md:flex items-center gap-8">
           <Link
             className="text-charcoal-gray dark:text-background-light/90 hover:text-primary dark:hover:text-primary text-sm font-medium"
@@ -55,12 +55,12 @@ export const Header = () => {
           >
             Санатории
           </Link>
-          <Link
+          {/* <Link
             className="text-charcoal-gray dark:text-background-light/90 hover:text-primary dark:hover:text-primary text-sm font-medium"
             href="/about"
           >
             О нас
-          </Link>
+          </Link> */}
         </nav>
         <div className="hidden md:flex items-center gap-4">
           <TourSelectionDialog/>
